@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       SizedBox(
-                        width: 50.0,
+                        width: 45.0,
                       ),
                       FaIcon(
                         FontAwesomeIcons.ellipsisV,
@@ -155,6 +155,7 @@ class _HomePageState extends State<HomePage> {
                           cardImage: 'images/charles-dog.jpg',
                         ),
                         HomeCard(cardImage: 'images/alvan-cat.jpg'),
+                        HomeCard(cardImage: 'images/camylla-dog.jpg'),
                       ],
                     ),
                   ),
