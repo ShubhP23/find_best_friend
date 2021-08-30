@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:find_best_friend/constants.dart';
 import 'package:find_best_friend/components.dart/rounded_widget.dart';
 
-bool _hasBeenPressed = false;
+enum _roundWidget { all, dogs, cats, birds, rabbits }
 
 class HomePage extends StatefulWidget {
   static const String id = 'homePage';
@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  _roundWidget? clicked;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,60 +64,75 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Rounded_widget(
                       title: 'All',
-                      colour:
-                          _hasBeenPressed ? Colors.black : Color(0xFFE1E4E7),
-                      textColour: _hasBeenPressed ? Colors.white : Colors.black,
+                      colour: clicked == _roundWidget.all
+                          ? Colors.black
+                          : Color(0xFFE1E4E7),
+                      textColour: clicked == _roundWidget.all
+                          ? Colors.white
+                          : Colors.black,
                       onpress: () {
                         setState(() {
-                          _hasBeenPressed = !_hasBeenPressed;
+                          clicked = _roundWidget.all;
                         });
                       },
                     ),
                     SizedBox(width: 8.0),
                     Rounded_widget(
                       title: 'Dogs',
-                      textColour: _hasBeenPressed ? Colors.white : Colors.black,
-                      colour:
-                          _hasBeenPressed ? Colors.black : Color(0xFFE1E4E7),
+                      colour: clicked == _roundWidget.dogs
+                          ? Colors.black
+                          : Color(0xFFE1E4E7),
+                      textColour: clicked == _roundWidget.dogs
+                          ? Colors.white
+                          : Colors.black,
                       onpress: () {
                         setState(() {
-                          _hasBeenPressed = !_hasBeenPressed;
+                          clicked = _roundWidget.dogs;
                         });
                       },
                     ),
                     SizedBox(width: 8.0),
                     Rounded_widget(
                       title: 'Cats',
-                      textColour: _hasBeenPressed ? Colors.white : Colors.black,
-                      colour:
-                          _hasBeenPressed ? Colors.black : Color(0xFFE1E4E7),
+                      colour: clicked == _roundWidget.cats
+                          ? Colors.black
+                          : Color(0xFFE1E4E7),
+                      textColour: clicked == _roundWidget.cats
+                          ? Colors.white
+                          : Colors.black,
                       onpress: () {
                         setState(() {
-                          _hasBeenPressed = !_hasBeenPressed;
+                          clicked = _roundWidget.cats;
                         });
                       },
                     ),
                     SizedBox(width: 8.0),
                     Rounded_widget(
                       title: 'Birds',
-                      textColour: _hasBeenPressed ? Colors.white : Colors.black,
-                      colour:
-                          _hasBeenPressed ? Colors.black : Color(0xFFE1E4E7),
+                      colour: clicked == _roundWidget.birds
+                          ? Colors.black
+                          : Color(0xFFE1E4E7),
+                      textColour: clicked == _roundWidget.birds
+                          ? Colors.white
+                          : Colors.black,
                       onpress: () {
                         setState(() {
-                          _hasBeenPressed = !_hasBeenPressed;
+                          clicked = _roundWidget.birds;
                         });
                       },
                     ),
                     SizedBox(width: 8.0),
                     Rounded_widget(
                       title: 'Rabbits',
-                      textColour: _hasBeenPressed ? Colors.white : Colors.black,
-                      colour:
-                          _hasBeenPressed ? Colors.black : Color(0xFFE1E4E7),
+                      colour: clicked == _roundWidget.rabbits
+                          ? Colors.black
+                          : Color(0xFFE1E4E7),
+                      textColour: clicked == _roundWidget.rabbits
+                          ? Colors.white
+                          : Colors.black,
                       onpress: () {
                         setState(() {
-                          _hasBeenPressed = !_hasBeenPressed;
+                          clicked = _roundWidget.rabbits;
                         });
                       },
                     ),
