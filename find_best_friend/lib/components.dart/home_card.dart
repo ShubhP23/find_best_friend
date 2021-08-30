@@ -38,6 +38,10 @@ class HomeCard extends StatelessWidget {
             Container(
               height: 150.0,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, spreadRadius: -4, blurRadius: 6),
+                ],
                 color: Colors.white,
                 borderRadius: BorderRadius.all(
                   Radius.circular(

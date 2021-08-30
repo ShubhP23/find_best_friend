@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAF9F6),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -179,70 +178,83 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 30.0,
-        child: Container(
+      bottomNavigationBar: Container(
+        height: 60.0,
+        decoration: BoxDecoration(
           color: Colors.white,
-          height: 60.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      setState(() {
-                        currentTab = 0;
-                      });
-                    },
-                    child: FaIcon(
-                      FontAwesomeIcons.home,
-                      color: currentTab == 0 ? Colors.black : Colors.grey,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.black26, spreadRadius: 0, blurRadius: 10),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+          child: BottomAppBar(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          currentTab = 0;
+                        });
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.home,
+                        color: currentTab == 0 ? Colors.black : Colors.grey,
+                      ),
                     ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      setState(() {
-                        currentTab = 1;
-                      });
-                    },
-                    child: FaIcon(
-                      FontAwesomeIcons.search,
-                      color: currentTab == 1 ? Colors.black : Colors.grey,
+                    MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          currentTab = 1;
+                        });
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.search,
+                        color: currentTab == 1 ? Colors.black : Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          currentTab = 2;
+                        });
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.solidHeart,
+                        color: currentTab == 2 ? Colors.black : Colors.grey,
+                      ),
                     ),
-                  )
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      setState(() {
-                        currentTab = 2;
-                      });
-                    },
-                    child: FaIcon(
-                      FontAwesomeIcons.solidHeart,
-                      color: currentTab == 2 ? Colors.black : Colors.grey,
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      setState(() {
-                        currentTab = 3;
-                      });
-                    },
-                    child: FaIcon(
-                      FontAwesomeIcons.solidUser,
-                      color: currentTab == 3 ? Colors.black : Colors.grey,
-                    ),
-                  )
-                ],
-              ),
-            ],
+                    MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          currentTab = 3;
+                        });
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.solidUser,
+                        color: currentTab == 3 ? Colors.black : Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
