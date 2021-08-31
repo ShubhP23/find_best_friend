@@ -15,7 +15,7 @@ class FindBestFriend extends StatelessWidget {
       routes: {
         HomePage.id: (context) => HomePage(),
         ProfilePage.id: (context) =>
-            ProfilePage(animalData: ModalRoute.of(context)!.settings.arguments),
+            ProfilePage(idx: ModalRoute.of(context)!.settings.arguments),
       },
     );
   }

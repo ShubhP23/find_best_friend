@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   _roundWidget? clicked;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +35,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CircleAvatar(
                         radius: 25.0,
+                        backgroundColor: Color(0xFFD7E0E7),
+                        child: FaIcon(
+                          FontAwesomeIcons.userAlt,
+                          color: Color(0xFF8C8293),
+                        ),
                       ),
                       SizedBox(
                         width: 20.0,
@@ -153,9 +159,13 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: kFetchData
                           .map((e) => GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(context, ProfilePage.id,
-                                      arguments: e);
+                                onTap: () async {
+                                  await Navigator.pushNamed(
+                                          context, ProfilePage.id,
+                                          arguments: kFetchData.indexOf(e))
+                                      .then((value) => setState(() {
+                                            // Call setState to refresh the page.
+                                          }));
                                 },
                                 child: HomeCard(
                                   animalData: e,

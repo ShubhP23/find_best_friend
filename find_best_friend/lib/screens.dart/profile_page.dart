@@ -1,16 +1,26 @@
+import 'package:find_best_friend/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String id = 'profilePage';
-  final animalData;
-  ProfilePage({@required this.animalData});
+  final idx;
+  ProfilePage({@required this.idx});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  void favourite() {
+    setState(() {
+      kFetchData[widget.idx]['favourite'] == true
+          ? kFetchData[widget.idx]['favourite'] = false
+          : kFetchData[widget.idx]['favourite'] = true;
+    });
+    // print(kFetchData[widget.idx]['favourite']);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -20,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
           body: Stack(
             children: [
               Container(
-                child: Image.asset(widget.animalData['image']),
+                child: Image.asset(kFetchData[widget.idx]['image']),
               ),
               SafeArea(
                 child: Padding(
@@ -49,7 +59,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               DraggableScrollableSheet(
-                // initialChildSize: 0.52,
                 initialChildSize: 0.52,
                 minChildSize: 0.52,
                 maxChildSize: 0.7,
@@ -74,19 +83,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    widget.animalData["name"],
+                                    kFetchData[widget.idx]["name"],
                                     style: TextStyle(
                                       fontSize: 35.0,
                                       fontWeight: FontWeight.w900,
                                     ),
                                   ),
-                                  CircleAvatar(
-                                    radius: 25.0,
-                                    backgroundColor: Color(0xFFE1E4E7),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.solidHeart,
-                                      size: 20.0,
-                                      color: Colors.redAccent,
+                                  GestureDetector(
+                                    onTap: () {
+                                      favourite();
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 25.0,
+                                      backgroundColor: Color(0xFFE1E4E7),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.solidHeart,
+                                        size: 20.0,
+                                        color: kFetchData[widget.idx]
+                                                    ['favourite'] ==
+                                                true
+                                            ? Colors.blueAccent
+                                            : Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -105,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: widget.animalData["location"],
+                                      text: kFetchData[widget.idx]["location"],
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w300,
@@ -131,7 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: widget.animalData["dob"],
+                                          text: kFetchData[widget.idx]["dob"],
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w300,
@@ -147,7 +165,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     text: TextSpan(
                                       children: [
                                         WidgetSpan(
-                                          child: widget.animalData['gender'] ==
+                                          child: kFetchData[widget.idx]
+                                                      ['gender'] ==
                                                   "  Male"
                                               ? FaIcon(
                                                   FontAwesomeIcons.mars,
@@ -161,7 +180,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 ),
                                         ),
                                         TextSpan(
-                                          text: widget.animalData["gender"],
+                                          text: kFetchData[widget.idx]
+                                              ["gender"],
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w300,
@@ -183,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: widget.animalData["breed"],
+                                          text: kFetchData[widget.idx]["breed"],
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w300,
@@ -207,7 +227,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 height: 10.0,
                               ),
                               Text(
-                                widget.animalData["about"],
+                                kFetchData[widget.idx]["about"],
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w300,

@@ -96,7 +96,7 @@ class _HomeCardState extends State<HomeCard> {
                               FontAwesomeIcons.solidHeart,
                               size: 18.0,
                               color: kFetchData[widget.idx]['favourite'] == true
-                                  ? Colors.redAccent
+                                  ? Colors.blueAccent
                                   : Colors.white,
                             ),
                           ),
