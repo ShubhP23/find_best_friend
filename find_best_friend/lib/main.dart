@@ -11,10 +11,11 @@ class FindBestFriend extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: ProfilePage.id,
+      initialRoute: HomePage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
-        ProfilePage.id: (context) => ProfilePage(),
+        ProfilePage.id: (context) =>
+            ProfilePage(animalData: ModalRoute.of(context)!.settings.arguments),
       },
     );
   }

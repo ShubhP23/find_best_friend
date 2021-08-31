@@ -1,3 +1,4 @@
+import 'package:find_best_friend/screens.dart/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:find_best_friend/constants.dart';
@@ -150,13 +151,18 @@ class _HomePageState extends State<HomePage> {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        HomeCard(
-                          cardImage: 'images/charles-dog.jpg',
-                        ),
-                        HomeCard(cardImage: 'images/alvan-cat.jpg'),
-                        HomeCard(cardImage: 'images/camylla-dog.jpg'),
-                      ],
+                      children: kFetchData
+                          .map((e) => GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, ProfilePage.id,
+                                      arguments: e);
+                                },
+                                child: HomeCard(
+                                  animalData: e,
+                                  idx: kFetchData.indexOf(e),
+                                ),
+                              ))
+                          .toList(),
                     ),
                   ),
                 ],
@@ -209,8 +215,9 @@ class _HomePageState extends State<HomePage> {
                           currentTab = 0;
                         });
                       },
-                      child: FaIcon(
-                        FontAwesomeIcons.home,
+                      child: Icon(
+                        Icons.home_filled,
+                        size: 29.0,
                         color: currentTab == 0 ? Colors.black : Colors.grey,
                       ),
                     ),
