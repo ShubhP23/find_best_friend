@@ -12,13 +12,15 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  // To toggle ProfilePage Heart Icon between Active State and Inactive State.
   void favourite() {
     setState(() {
       kFetchData[widget.idx]['favourite'] == true
           ? kFetchData[widget.idx]['favourite'] = false
           : kFetchData[widget.idx]['favourite'] = true;
     });
-    // print(kFetchData[widget.idx]['favourite']);
+    // if the heart icon will be in Active state the same will reflect
+    //in the ProfilePage and vice-versa in the HomePage.
   }
 
   @override
@@ -29,6 +31,8 @@ class _ProfilePageState extends State<ProfilePage> {
         Scaffold(
           body: Stack(
             children: [
+              //Providing Image to the ProfilePage by Fetching Data from
+              //kFetchData List.
               Container(
                 child: Image.asset(kFetchData[widget.idx]['image']),
               ),
@@ -42,6 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       IconButton(
                         onPressed: () {
                           setState(() {
+                            //Popping the ProfilePage.
                             Navigator.pop(context);
                           });
                         },
@@ -58,6 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
+              //Draggable Sheet to Contain the About Section.
               DraggableScrollableSheet(
                 initialChildSize: 0.52,
                 minChildSize: 0.52,
@@ -69,6 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Container(
                     color: Colors.white,
                     child: ListView(
+                      //Passing Controller for the Draggable Sheet.
                       controller: controller,
                       children: [
                         Padding(
@@ -83,7 +90,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    kFetchData[widget.idx]["name"],
+                                    kFetchData[widget.idx]["name"]
+                                        .toString()
+                                        .toUpperCase(),
                                     style: TextStyle(
                                       fontSize: 35.0,
                                       fontWeight: FontWeight.w900,
@@ -99,6 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       child: FaIcon(
                                         FontAwesomeIcons.solidHeart,
                                         size: 20.0,
+                                        //Toggling the Heart Icon.
                                         color: kFetchData[widget.idx]
                                                     ['favourite'] ==
                                                 true
@@ -159,12 +169,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ],
                                     ),
                                   ),
-                                  // SizedBox(width: 25.0),
                                   Spacer(),
                                   RichText(
                                     text: TextSpan(
                                       children: [
                                         WidgetSpan(
+                                          //Fetching data to check if Gender is
+                                          //male or female and accordingly
+                                          //toggle the icon.
                                           child: kFetchData[widget.idx]
                                                       ['gender'] ==
                                                   "  Male"
@@ -245,6 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
+
+        //Stacked the Adopt Now Material Button above Scaffold.
         Padding(
           padding: const EdgeInsets.all(15.0),
           child: MaterialButton(

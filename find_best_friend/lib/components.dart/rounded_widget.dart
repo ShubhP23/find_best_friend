@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//A class for Rounded horizontal Widget for HomePage.
+
 class Rounded_widget extends StatelessWidget {
   Rounded_widget(
       {@required this.title,

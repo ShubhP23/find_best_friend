@@ -11,9 +11,12 @@ class FindBestFriend extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      //Routing to shift from one page to another.
       initialRoute: HomePage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
+        //ProfilePage has been given an argument to fetch datas from HomePage.
         ProfilePage.id: (context) =>
             ProfilePage(idx: ModalRoute.of(context)!.settings.arguments),
       },

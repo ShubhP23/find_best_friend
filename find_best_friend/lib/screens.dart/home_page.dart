@@ -5,6 +5,8 @@ import 'package:find_best_friend/constants.dart';
 import 'package:find_best_friend/components.dart/rounded_widget.dart';
 import 'package:find_best_friend/components.dart/home_card.dart';
 
+//enum used to define a small set of predefined set of
+//values that will be used across the logics
 enum _roundWidget { all, dogs, cats, birds, rabbits }
 int currentTab = 0;
 
@@ -76,6 +78,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(10.0),
                     child: Row(
                       children: [
+                        //checking through all the rounded_widgets.
                         Rounded_widget(
                           title: 'All',
                           colour: clicked == _roundWidget.all
@@ -157,8 +160,15 @@ class _HomePageState extends State<HomePage> {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      //A list kFetchData is used to pass
+                      //values from one page to another with arguments.
                       children: kFetchData
+                          //Wrapping the Container containing Image with
+                          //GestureDetector to go to ProfilePage on tap.
                           .map((e) => GestureDetector(
+                                // async and wait used to reflect the State changes
+                                // in HomePage to the ProfilePage
+                                //and vice-versa
                                 onTap: () async {
                                   await Navigator.pushNamed(
                                           context, ProfilePage.id,
@@ -169,6 +179,7 @@ class _HomePageState extends State<HomePage> {
                                 },
                                 child: HomeCard(
                                   animalData: e,
+                                  //Fetching the List with it's index value.
                                   idx: kFetchData.indexOf(e),
                                 ),
                               ))
@@ -181,6 +192,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+
+      //Floating action Button for the HomePage.
       floatingActionButton: Container(
         height: MediaQuery.of(context).size.height * .08,
         child: FittedBox(
@@ -212,6 +225,7 @@ class _HomePageState extends State<HomePage> {
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),
           ),
+          //Docked the FAB on top of BottomAppBar.
           child: BottomAppBar(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

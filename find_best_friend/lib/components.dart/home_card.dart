@@ -1,12 +1,14 @@
 import 'package:find_best_friend/constants.dart';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+//A Class Specific for the Cards in HomePage.
 
 class HomeCard extends StatefulWidget {
   final animalData;
   final idx;
 
+  //Constructor to pass the values in the ProfilePage.
   HomeCard({@required this.animalData, @required this.idx});
 
   @override
@@ -14,6 +16,7 @@ class HomeCard extends StatefulWidget {
 }
 
 class _HomeCardState extends State<HomeCard> {
+  //A function to toogle the heart icon between active state and inactive state.
   void favourite() {
     setState(() {
       kFetchData[widget.idx]['favourite'] == true
@@ -27,6 +30,8 @@ class _HomeCardState extends State<HomeCard> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //Stacking the Container containing Image
+        //below the About section Container.
         Stack(
           alignment: Alignment.bottomCenter,
           children: [
@@ -85,6 +90,8 @@ class _HomeCardState extends State<HomeCard> {
                             fontSize: 25.0,
                           ),
                         ),
+                        //Wrapping the Heart Icon with
+                        //GestureDetector to toggle state.
                         GestureDetector(
                           onTap: () {
                             favourite();

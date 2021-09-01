@@ -1,8 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// TextFieldDecoration for the Search Bar in HomePage.
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Search',
   hintStyle: TextStyle(
@@ -45,6 +45,8 @@ const kTextFieldDecoration = InputDecoration(
   ),
 );
 
+//A dynamic List with datas that can be fetched when required in both the pages
+//by passing arguments.
 List<dynamic> kFetchData = [
   {
     "name": "Charles",
